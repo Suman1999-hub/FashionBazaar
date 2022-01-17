@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <strong>Hello, <%= name %></strong>
+    <p>
+      Thanks for signup to FashionBazzar. To verify your email click on the
+      below link.
+    </p>
+    <a
+      href="http://localhost:8000/verify/<%= userId %>/<%= confirmationToken %>"
+      target="_blank"
+    >
+      http://localhost:8000/verify/<%= userId %>/<%= confirmationToken %>
+    </a>
+  </body>
+</html>

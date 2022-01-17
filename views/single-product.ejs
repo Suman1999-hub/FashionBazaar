@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <!-- for single product -->
+
+    <div class="container py-5" style="margin-top: 86px">
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-4 p-2">
+          <img
+            src="<%= item.img_url %>"
+            alt="product_image"
+            width="100%"
+            height="450px"
+            class="rounded"
+          />
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <h4 class="fs-5"><%= item.name %></h4>
+          <h4 class="fs-4 pt-4">
+            <i class="fas fa-rupee-sign"></i>
+            <%= item.price %>
+          </h4>
+          <p class="badge bg-success text-wrap">inclusive of all taxes</p>
+          <h4 class="fs-6 pt-2 text-muted">
+            <i class="fas fa-info-circle"></i> Product Details
+          </h4>
+          <p class="pb-3"><%= item.details %></p>
+          <!-- <form action="/addtocart" method="POST"> -->
+          <!-- <select
+              class="form-select mb-4"
+              aria-label="Default select example"
+              style="width: 200px"
+              name="size"
+              required
+            >
+              <option value="">Select size</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select> -->
+          <div
+            class="text-success w-100 px-3 d-flex py-2 rounded mt-4"
+            style="
+              background-color: #bcf5bc;
+              font-size: 14px;
+              margin-bottom: 8px;
+              display: none !important;
+            "
+            id="success"
+          >
+            <i class="fas fa-check-circle pt-1"></i>
+            <p class="my-0 px-2">Item added to cart</p>
+          </div>
+          <% if(typeof isLogin !== 'undefined' && isLogin === true) { %>
+          <!-- <form action="/addtocart" method="post"> -->
+          <button
+            type="submit"
+            class="btn btn-primary mt-2 px-4 py-3 fw-bold"
+            style="width: 300px"
+            onclick="addtoCart()"
+          >
+            ADD TO CART
+          </button>
+          <!-- </form> -->
+          <% } else { %>
+          <button
+            type="submit"
+            class="btn btn-primary mt-5 px-4 py-3 fw-bold"
+            style="width: 300px"
+            disabled
+          >
+            ADD TO CART
+          </button>
+          <% } %>
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- for single product -->
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script>
+      async function addtoCart() {
+        console.log(window.location.href);
+        let url = window.location.href;
+        const productId = url.split('/')[5];
+        console.log(productId);
+
+        let success = document.getElementById('success');
+
+        const data = { productId };
+
+        const response = await fetch('/addtocart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        console.log('response');
+        const obj = await response.json();
+        console.log(obj.status);
+
+        if (obj.status === 'ok') {
+          success.style.display = 'block';
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <!-- FOR Search PAGE -->
+
+    <div class="container fluid my-5" style="color: #6f42c1; padding-top: 60px">
+      <h1 class="text-center">You searched for : <%= text %></h1>
+    </div>
+
+    <div class="container" style="min-height: 40vh">
+      <div class="row pb-5">
+        <% if(typeof items !== 'undefined' && items.length > 0) { %> <%
+        items.forEach(item => { %>
+
+        <div class="col-12 col-lg-3 col-md-3 col-sm-6 p-3">
+          <div
+            class="
+              rounded-3
+              shadow
+              overflow-hidden
+              border border-1
+              product-card
+            "
+          >
+            <a
+              href="/<%= item.gender %>/<%= item.type %>/<%= item.product_id %>"
+              class="text-decoration-none text-dark"
+            >
+              <div class="p-2">
+                <img
+                  class="rounded-3"
+                  style="object-fit: cover"
+                  height="400px"
+                  width="100%"
+                  src="<%= item.img_url %>"
+                  alt="abcd"
+                />
+                <p
+                  class="text-center pt-2 fw-bold m-0 pb-1"
+                  style="font-size: 20px; color: rgb(65, 64, 64)"
+                >
+                  <%= item.name %>
+                </p>
+                <p
+                  class="text-center fw-bold m-0 pb-1 pt-2 fs-5"
+                  style="color: #6f42c1"
+                >
+                  <i class="fas fa-rupee-sign"></i>
+                  <%= item.price %>
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <img
+          src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632490345/node%20js%20project/myfsmizehhib8gbndr9b.png"
+          alt="items not found"
+          style="height: 350px; max-width: 500px; object-fit: cover"
+          class="mx-auto"
+        />
+        <h4 class="text-center">
+          <span style="color: red">Oops!</span> No items found
+        </h4>
+        <% } %>
+      </div>
+      <!-- <div class="text-center pb-5">
+        <a href="">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            style="background-color: #6f42c1"
+          >
+            View More
+          </button>
+        </a>
+      </div> -->
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

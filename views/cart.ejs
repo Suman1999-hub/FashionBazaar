@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="/css/index.css" />
+
+        <title>Fashion Bazzar</title>
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs')%>
+
+        <!-- cart container -->
+
+        <div class="container py-4" style="margin-top: 80px;">
+            <div class="row justify-content-center">
+                <% if(typeof items === 'undefined' || items.length===0) { %>
+                    <div class="col-10 col-md-8 p-3 border-primary rounded d-flex justify-content-center flex-column align-items-center"
+                        style="max-width: 800px;"> 
+                        <% if(typeof orderPlaced !== 'undefined' && orderPlaced == 'true') { %>
+                            <div
+                                class="text-success w-100 px-3 d-flex py-2 rounded"
+                                style="
+                                    background-color: #bcf5bc;
+                                    font-size: 14px;
+                                    margin-bottom: 8px;
+                                "
+                                >
+                                <i class="fas fa-check-circle pt-1"></i>
+                                <p class="my-0 px-2">Order Placed</p>
+                            </div>
+                        <% } %>
+                        <h1 class="text-center" style="color: #6F42C1;">
+                            <span>
+                            Your Cart is
+                            </span>
+                            <span style="color: red;" class="fw-bold">
+                                empty
+                            </span>
+                        </h1>
+                        <img 
+                            src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632477166/node%20js%20project/slycvozl8vxiiidlqqla.png"
+                            alt="empty_cart" style="width: 90%; height: 300px; object-fit: cover;">
+                    </div>
+                    <% } %>
+                        <% if(typeof items !== 'undefined' && items.length > 0) { %>
+                            <% if(typeof orderPlaced !== 'undefined' && orderPlaced == 'false') { %>
+                                <div
+                                    class="text-danger w-100 px-3 mb-3 d-flex py-2 rounded"
+                                    style="
+                                        background-color: #f0c5be;
+                                        font-size: 14px;
+                                        max-width: 800px;
+                                    "
+                                    >
+                                    <i class="fas fa-times-circle pt-1"></i>
+                                    <p class="my-0 px-2">Fill the address form properly</p>
+                                </div>
+                            <% } %>
+                            <div class="col-10 col-md-8 border border-2 p-3 border-primary rounded"
+                                style="max-width: 800px;">
+                                <h5 class="pb-1">My Cart (<%= totalCount %>)</h5>
+                                <hr />
+                                <% if(items.length> 0) { %> <% items.forEach(item=> { %>
+                                        <div class="row px-3">
+                                            <div class="col-12 col-sm-4">
+                                                <img src="<%= item.img_url %>" alt="cart image" height="200px"
+                                                    width="100%" style="object-fit: cover; border-radius: 8px;">
+                                            </div>
+                                            <div class="col-12 col-sm-7">
+                                                <h5 class="fs-5">
+                                                    <%= item.name %>
+                                                </h5>
+                                                <p class="fs-6 fw-bold">Rs. <%= item.price %>
+                                                </p>
+                                                <div class="d-flex align-items-baseline">
+                                                    <form action="/cart" method="post">
+                                                        <input type="text" name="productId"
+                                                            value="<%= item.product_id %>" style="display: none;">
+                                                        <input type="text" name="actionType" value="increment"
+                                                            style="display: none;">
+                                                        <button type="submit" class="btn btn-primary btn-xs">
+                                                            +
+                                                        </button>
+                                                    </form>
+                                                    <p class="px-3">
+                                                        <%= item.count %>
+                                                    </p>
+                                                    <form action="/cart" method="post">
+                                                        <input type="text" name="productId"
+                                                            value="<%= item.product_id %>" style="display: none;">
+                                                        <input type="text" name="actionType" value="decrement"
+                                                            style="display: none;">
+                                                        <button type="submit" class="btn btn-primary btn-xs">
+                                                            -
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <form action="/cart" method="post">
+                                                    <input type="text" name="productId" value="<%= item.product_id %>"
+                                                        style="display: none;">
+                                                    <input type="text" name="actionType" value="remove"
+                                                        style="display: none;">
+                                                    <button type="submit" class="btn btn-sm btn-dark mt-3">Remove
+                                                        Item</button>
+                                                </form>
+                                            </div>
+                                            <hr class="mt-3" />
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                                                <div class="d-flex justify-content-between px-3">
+                                                    <div>
+                                                        <h4 class="pb-1">Total</h4>
+                                                    </div>
+                                                    <div>
+                                                        <h4>
+                                                            Rs: <%= totalPrice %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-end px-3">
+                                                    <form action="/cart/placeorder" method="POST">
+                                                        <input type="text" name="actionType" value="placeOrder"
+                                                            style="display: none;">
+                                                        <button class="btn btn-primary py-3 mt-2 border-0" type="submit"
+                                                            style="width: 200px; background-color: orangered;">
+                                                            Place Order
+                                                        </button>
+                                                    </form>
+                                                </div>
+                            </div>
+                            <% } %>
+                                <div class="col-10 col-md-4 px-md-5 py-4 py-md-0">
+                                    <h5 class="pb-3">Order Address</h5>
+                                    <div class="text-success w-100 px-3 d-flex py-2 rounded mb-1" style="
+                    background-color: #bcf5bc;
+                    font-size: 14px;
+                    display: none !important;
+                " id="success">
+                                        <i class="fas fa-check-circle pt-1"></i>
+                                        <p class="my-0 px-2">Address Saved</p>
+                                    </div>
+                                    <form class="row g-3 needs-validation">
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom01" class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control" id="validationCustom01"
+                                                value="<%= address.customer_name %>" required>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom02" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" id="validationCustom02"
+                                                value="<%= address.ph_no %>" required>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom03" class="form-label">City</label>
+                                            <input type="text" class="form-control" id="validationCustom03"
+                                                value="<%= address.city %>" required>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom04" class="form-label">State</label>
+                                            <select class="form-select" id="validationCustom04" required>
+                                                <option selected value="<%= address.state %>">
+                                                    <%= address.state %>
+                                                </option>
+                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                                                </option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                                <option value="Daman and Diu">Daman and Diu</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Lakshadweep">Lakshadweep</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Orissa">Orissa</option>
+                                                <option value="Pondicherry">Pondicherry</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttaranchal">Uttaranchal</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom05" class="form-label">Zip</label>
+                                            <input type="text" class="form-control" id="validationCustom05"
+                                                value="<%= address.zip_code %>" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid zip.
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="validationCustom06" class="form-label">Landmark</label>
+                                            <input type="text" class="form-control" id="validationCustom06"
+                                                value="<%= address.landmark %>" required>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <button class="btn btn-primary" type="submit" style="width: 200px;"
+                                                onclick="saveAddress(event)">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                    </form>
+                                </div>
+            </div>
+        </div>
+
+        <!-- cart container -->
+
+
+
+        <%- include('./partials/footer.ejs') %>
+            <script>
+                async function saveAddress() {
+                    event.preventDefault();
+                    console.log('saveAddress');
+
+                    const customer_name = document.getElementById('validationCustom01').value;
+                    const ph_no = document.getElementById('validationCustom02').value;
+                    const city = document.getElementById('validationCustom03').value;
+                    const state = document.getElementById('validationCustom04').value;
+                    const zip = document.getElementById('validationCustom05').value;
+                    const landmark = document.getElementById('validationCustom06').value;
+
+                    const success = document.getElementById('success');
+
+                    console.log(state);
+
+                    const address = {
+                        customer_name, ph_no, city, state, zip, landmark
+                    };
+
+                    console.log(address);
+
+                    const response = await fetch('/saveaddress', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(address),
+                    });
+                    console.log('response');
+                    const obj = await response.json();
+                    console.log(obj.status);
+
+                    if (obj.status === 'ok') {
+                        success.style.display = 'block';
+                    }
+                }
+            </script>
+</body>
+
+</html>

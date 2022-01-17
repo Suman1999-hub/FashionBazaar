@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <div
+      class="container d-flex align-items-center justify-content-center"
+      style="min-height: 100vh"
+    >
+      <div
+        class="row justify-content-center w-100 py-5 rounded-3"
+        style="box-shadow: #bc7ef0 0px 5px 15px"
+      >
+        <div class="col-md-4 order-3 order-md-1">
+          <div class="form">
+            <h2 class="text-center">Sign In</h2>
+            <% if(typeof errorMessage !== 'undefined') { %>
+            <div
+              class="text-danger w-100 px-3 d-flex py-2 rounded mt-3"
+              style="
+                background-color: #f0c5be;
+                font-size: 14px;
+                margin-bottom: 8px;
+              "
+            >
+              <i class="fas fa-times-circle pt-1"></i>
+              <p class="my-0 px-2"><%= errorMessage %></p>
+            </div>
+            <% } %>
+            <form action="/signin" method="POST">
+              <div class="inputbox mt-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  name="email"
+                  value="<%= typeof valueObj !== 'undefined' ? valueObj.email : '' %>"
+                  required
+                />
+              </div>
+              <div class="inputbox mt-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  required
+                />
+              </div>
+              <div
+                class="d-flex justify-content-center align-items-center mt-4"
+              >
+                <button
+                  type="submit"
+                  class="btn register btn-block fw-bold"
+                  style="width: 200px; background-color: #6f42c1; color: white"
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
+            <div class="text-center pt-3">
+              <span
+                >Need to create an account?
+                <a href="/signup" class="fw-bold" style="color: #6f42c1"
+                  >Sign Up</a
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 order-1">
+          <div class="text-center">
+            <img
+              src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632507690/node%20js%20project/kb2cjh1dzlcdkarq9oen.png"
+              height="450px"
+              width="100%"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

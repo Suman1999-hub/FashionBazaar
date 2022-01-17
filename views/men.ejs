@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <!-- FOR MEN'S PAGE -->
+
+    <div class="container fluid my-5" style="color: #6f42c1; padding-top: 60px">
+      <h1 class="text-center">Men's <%= text %></h1>
+    </div>
+
+    <div class="container">
+      <div class="row pb-5">
+        <% if(items.length > 0) { %> <% items.forEach(item => { %>
+        <div class="col-12 col-lg-3 col-md-3 col-sm-6 p-3">
+          <div
+            class="
+              rounded-3
+              shadow
+              overflow-hidden
+              border border-1
+              product-card
+            "
+          >
+            <a
+              href="/<%= baseUrl %>/<%= item.product_id %>"
+              class="text-decoration-none text-dark"
+            >
+              <div class="p-2">
+                <img
+                  class="rounded-3"
+                  style="object-fit: cover"
+                  height="400px"
+                  width="100%"
+                  src="<%= item.img_url %>"
+                  alt="abcd"
+                />
+                <p
+                  class="text-center pt-2 fw-bold m-0 pb-1"
+                  style="font-size: 20px; color: rgb(65, 64, 64)"
+                >
+                  <%= item.name %>
+                </p>
+                <p
+                  class="text-center fw-bold m-0 pb-1 pt-2 fs-5"
+                  style="color: #6f42c1"
+                >
+                  <i class="fas fa-rupee-sign"></i>
+                  <%= item.price %>
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <% }) %> <% } %>
+      </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

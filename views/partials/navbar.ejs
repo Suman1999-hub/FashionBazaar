@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-sm navbar-dark position-fixed top-0 w-100"
+    style="background-color: #6F42C1; z-index: 1000;">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <a class="navbar-brand ps-3" href="/">
+        <img src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632500185/node%20js%20project/f1mvremx7e4fjel4xfpq.png"  
+        alt="mylogo" height="60px" width="60px">
+      </a>
+      <div class="px-3 d-block d-sm-none ml-auto position-relative" style="margin-left: auto;">
+        <button class="bg-transparent border-0" dropdown-toggle type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle" style="font-size: 40px; color: white;"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end position-absolute mt-2" aria-labelledby="dropdownMenuButton1"
+          style="margin-right: 20px;">
+          
+          <li><a class="dropdown-item" href="/cart">Cart</a></li>
+          <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+        </ul>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <!-- <button class="bg-transparent border-0" dropdown-toggle type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              MEN
+            </button> -->
+            <div class="dropdown">
+              <p class="nav-link fw-bolder" href="#" style="color: white; letter-spacing: 2px; margin-top: 10px;"
+                dropdown-toggle type="button" id="menDropdown" data-bs-toggle="dropdown" aria-expanded="false">MEN</p>
+              <ul class="dropdown-menu" aria-labelledby="menDropdown" style="margin-right: 20px;">
+                <li><a class="dropdown-item" href="/men/t-shirt">T-Shirt</a></li>
+                <li><a class="dropdown-item" href="/men/shirt">Shirt</a></li>
+                <li><a class="dropdown-item" href="/men/jeans">Jeans</a></li>
+                <li><a class="dropdown-item" href="/men/watch">Watch</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <p class="nav-link fw-bolder" href="#" style="color: white; letter-spacing: 2px; margin-top: 10px;"
+                dropdown-toggle type="button" id="womenDropdown" data-bs-toggle="dropdown" aria-expanded="false">WOMEN
+              </p>
+              <ul class="dropdown-menu" aria-labelledby="womenDropdown" style="margin-right: 20px;">
+                <li><a class="dropdown-item" href="/women/kurti">Kurti</a></li>
+                <li><a class="dropdown-item" href="/women/saree">Saree</a></li>
+                <li><a class="dropdown-item" href="/women/t-shirt">T-Shirt</a></li>
+                <li><a class="dropdown-item" href="/women/jeans">Jeans</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false" style="color: white; letter-spacing: 2px;">
+              MEN
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">T-Shirts</a></li>
+              <li><a class="dropdown-item" href="#">T-Shirts</a></li>
+              <li><a class="dropdown-item" href="#">T-Shirts</a></li>
+            </ul>
+          </li> -->
+        </ul>
+        <form class="d-flex" action="/search" method="GET">
+          <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" required>
+          <button type="submit" class="btn btn-warning">Search</button>
+        </form>
+      </div>
+      <div class="px-3 d-none d-sm-block position-relative">
+        <button class="bg-transparent border-0" dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle" style="font-size: 40px; color: white;"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end position-absolute mt-2" aria-labelledby="dropdownMenuButton1"
+          style="margin-right: 20px;">
+          <% if(typeof isLogin !== 'undefined' && isLogin === true) { %>
+            <li><a class="dropdown-item" href="/cart">
+              <i class="fas fa-cart-plus px-1"></i>
+              Cart
+            </a></li>
+            <li><a class="dropdown-item" href="/logout">
+              <i class="fas fa-sign-out-alt px-1"></i>
+              Log Out
+            </a></li>
+          <% } else { %>
+            <li><a class="dropdown-item" href="/signup">
+              <i class="fas fa-user-plus px-2"></i>
+              Sign Up
+            </a></li>
+            <li><a class="dropdown-item" href="/signin">
+              <i class="fas fa-sign-in-alt px-2"></i>
+              Sign In
+            </a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>

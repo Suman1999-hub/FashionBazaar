@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      style="margin-top: 86px"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="4"
+          aria-label="Slide 5"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="5"
+          aria-label="Slide 6"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="/images/online-shop.png"
+            height="600px"
+            class="d-block w-100"
+            alt="online-shopping"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/images/women-hat.jpg"
+            height="600px"
+            class="d-block w-100"
+            alt="womens-hat"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/images/womens-fashion.png"
+            height="600px"
+            class="d-block w-100"
+            alt="women-fashion"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/images/mens-suits.jpg"
+            height="600px"
+            class="d-block w-100"
+            alt="mens-watch"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/images/mens-accessories.jpg"
+            height="600px"
+            class="d-block w-100"
+            alt="men-accessories"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/images/mens-tie.jpg"
+            height="600px"
+            class="d-block w-100"
+            alt="men-tie"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="container">
+      <h2 class="py-3 pt-5 fw-bold" style="color: #6f42c1; letter-spacing: 2px">
+        For Him
+      </h2>
+      <div class="row justify-sm-content-between px-3">
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/men/t-shirt" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632494577/node%20js%20project/fxky7ztmmkt5mdt3szjp.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">T-Shirts</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/men/shirt" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632498040/node%20js%20project/haocfjw5lck8vqst66zk.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Shirts</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/men/jeans" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632497381/node%20js%20project/uzkbvt8pstejwccpazwq.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Jeans</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/men/watch" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632496849/node%20js%20project/gzjt9qgssxhnz4gse3gi.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Watch</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2 class="py-3 pt-5 fw-bold" style="color: #6f42c1; letter-spacing: 2px">
+        For Her
+      </h2>
+      <div class="row justify-sm-content-between px-3">
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/women/kurti" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="/images/women-kurta.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Kurti</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/women/saree" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="/images/women-sarees.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Saree</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/women/t-shirt" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="/images/women-tshirt.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">T-Shirt</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-2">
+          <a href="/women/jeans" style="text-decoration: none">
+            <div class="catagory-card p-2">
+              <img
+                src="/images/women-jeans.jpg"
+                class="card-img-top"
+                alt="men-t-shirt"
+              />
+              <h4 class="py-2 pt-3 text-center">Jeans</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>

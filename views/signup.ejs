@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+
+    <!-- custom css -->
+
+    <title>Fashion Bazzar</title>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+    <!-- toast -->
+
+    <!-- toast -->
+
+    <div
+      class="container d-flex align-items-center justify-content-center"
+      style="min-height: 100vh"
+    >
+      <div
+        class="row justify-content-center w-100 py-5 rounded-3"
+        style="box-shadow: #bc7ef0 0px 5px 15px"
+      >
+        <div class="col-md-4 order-3 order-md-1">
+          <div class="form">
+            <h2 class="text-center">Create Account</h2>
+            <% if(typeof errorMessage !== 'undefined') { %>
+            <div
+              class="text-danger w-100 px-3 d-flex py-2 rounded"
+              style="
+                background-color: #f0c5be;
+                font-size: 14px;
+                margin-bottom: 8px;
+              "
+            >
+              <i class="fas fa-check-circle pt-1"></i>
+              <p class="my-0 px-2"><%= errorMessage %></p>
+            </div>
+            <% } %> <% if(typeof accountCreated !== 'undefined' &&
+            accountCreated === true) { %>
+            <div
+              class="text-success w-100 px-3 d-flex py-2 rounded"
+              style="
+                background-color: #bcf5bc;
+                font-size: 14px;
+                margin-bottom: 8px;
+              "
+            >
+              <i class="fas fa-check-circle pt-1"></i>
+              <p class="my-0 px-2">Account Created</p>
+            </div>
+            <div
+              class="text-success w-100 px-3 d-flex py-2 rounded"
+              style="
+                background-color: #bcf5bc;
+                font-size: 14px;
+                margin-bottom: 5px;
+              "
+            >
+              <i class="fas fa-envelope mt-1"></i>
+              <p class="my-0 px-2">Check your email and verify your account</p>
+            </div>
+            <% } %>
+            <form action="/signup" method="POST">
+              <div class="inputbox mt-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="Name"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  value="<%= typeof valueObj !== 'undefined' ? valueObj.name : '' %>"
+                  required
+                />
+                <% if(typeof errorObj !== 'undefined' && errorObj.errorName ===
+                true) { %>
+                <p class="text-danger fw-bold px-1" style="font-size: 14px">
+                  Invalid Name
+                </p>
+                <% } %>
+              </div>
+              <div class="inputbox mt-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  name="email"
+                  value="<%= typeof valueObj !== 'undefined' ? valueObj.email : '' %>"
+                  required
+                />
+                <% if(typeof errorObj !== 'undefined' && errorObj.errorEmail ===
+                true) { %>
+                <p class="text-danger fw-bold px-1" style="font-size: 14px">
+                  Invalid Email
+                </p>
+                <% } %>
+              </div>
+              <div class="inputbox mt-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  value="<%= typeof valueObj !== 'undefined' ? valueObj.password : '' %>"
+                  required
+                />
+              </div>
+              <div
+                class="d-flex justify-content-center align-items-center mt-4"
+              >
+                <button
+                  type="submit"
+                  class="btn register btn-block fw-bold"
+                  style="width: 200px; background-color: #6f42c1; color: white"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <div class="text-center pt-3">
+              <span
+                >Already have an account?
+                <a href="/signin" class="fw-bold" style="color: #6f42c1"
+                  >Sign in</a
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 order-1">
+          <div class="text-center">
+            <img
+              src="https://res.cloudinary.com/dycbkduf4/image/upload/v1632507668/node%20js%20project/g29i7njxppjaiwk5n8yv.png"
+              height="450px"
+              width="100%"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+    <script>
+      // function signup(event) {
+      //   event.preventDefault();
+      //   const name = document.getElementById('name').value;
+      //   const email = document.getElementById('email').value;
+      //   const password = document.getElementById('password').value;
+
+      //   console.log(name, email, password);
+
+      //   fetch('/signup', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ name, email, password }),
+      //   })
+      //     .then((res) => console.log('object'))
+      //     .catch((error) => console.log(error));
+
+      //   console.log('signup');
+      // }
+    </script>
+  </body>
+</html>
